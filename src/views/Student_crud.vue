@@ -96,7 +96,7 @@ export default {
 
     const fetchStudents = async () => {
       try {
-        const response = await fetch("http://localhost:8080/project/php_api/student_crud.php");
+        const response = await fetch("http://localhost/project/php_api/student_crud.php");
         const result = await response.json();
 
         if (result.success) {
@@ -139,7 +139,7 @@ export default {
 
     // ✅ ใช้ฟังก์ชันเดียวสำหรับทั้งเพิ่ม/แก้ไข
     const saveStudent = async () => {
-      const url = "http://localhost:8080/project/php_api/student_crud.php";
+      const url = "http://localhost/project/php_api/student_crud.php";
       const method = isEditMode.value ? "PUT" : "POST";
 
       try {
@@ -167,7 +167,7 @@ export default {
     const deleteStudent = async (id) => {
       if (!confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
       try {
-        const response = await fetch("http://localhost:8080/project/php_api/student_crud.php", {
+        const response = await fetch("http://localhost/project/php_api/student_crud.php", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ student_id: id })
