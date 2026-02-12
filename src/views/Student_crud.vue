@@ -11,11 +11,11 @@
     <table class="table table-bordered table-striped">
       <thead class="table-primary">
         <tr>
-          <th>ID</th>
+          <th>รหัสนักศึกษา</th>
           <th>ชื่อ</th>
           <th>นามสกุล</th>
           <th>เบอร์โทร</th>
-          <th>อีเมลล์</th>
+          <th>อีเมล</th>
           <th>แก้ไข/ลบ</th>
         </tr>
       </thead>
@@ -43,7 +43,7 @@
     <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
     <!-- ✅ Modal ใช้ทั้งเพิ่ม/แก้ไข -->
-    <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal fade" id="editModal" tabindex="-1">   
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -62,10 +62,10 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">เบอร์โทร</label>
-                <input v-model="editStudent.phone" type="text" class="form-control" required>
+                <input v-model="editStudent.phone" type="number" class="form-control" required>
               </div>
               <div class="mb-3">
-                <label class="form-label">อีเมลล์</label>
+                <label class="form-label">อีเมล</label>
                 <input v-model="editStudent.email" type="text" class="form-control" required>
               </div>
               
@@ -117,7 +117,7 @@ export default {
       editModal = new window.bootstrap.Modal(modalEl);
     });
 
-    // ✅ เปิด Modal เพิ่มลูกค้าใหม่
+    // ✅ เปิด Modal เพิ่มข้อมูลนักศึกษาใหม่
     const openAddModal = () => {
       isEditMode.value = false;
       editStudent.value = {
@@ -130,7 +130,7 @@ export default {
       editModal.show();
     };
 
-    // ✅ เปิด Modal แก้ไขลูกค้า
+    // ✅ เปิด Modal แก้ไขข้อมูลนักศึกษา
     const openEditModal = (student) => {
       isEditMode.value = true;
       editStudent.value = { ...student };
